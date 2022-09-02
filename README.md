@@ -1,2 +1,2 @@
 # MonkeyGame
-monke.
+monkey.
