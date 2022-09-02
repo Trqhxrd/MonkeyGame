@@ -1,0 +1,19 @@
+{
+  "name": "monkeygame",
+  "version": "1.0.0",
+  "description": "monke.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trqhxrd/MonkeyGame.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Trqhxrd/MonkeyGame/issues"
+  },
+  "homepage": "https://github.com/Trqhxrd/MonkeyGame#readme"
+}
