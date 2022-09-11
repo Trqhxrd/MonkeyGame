@@ -2,8 +2,8 @@ export function helloWorld() {
     console.log("Hello World!")
 }
 
-export class Example{
+export class Example {
     constructor() {
-        helloWorld()
+        console.log("OBJ instantiated.")
     }
 }
