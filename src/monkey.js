@@ -1,21 +1,21 @@
-export class Monkey{
-    constructor(context,x,y) {
+export class Monkey {
+    constructor(context, x, y) {
         this.context = context
         this.x = x
         this.y = y
-        this.img = new Image ()
+        this.img = new Image()
         this.img.src = "./assets/Monkey.png"
-
     }
-    draw(){
-        let self = this
+
+    draw = () => {
         let img = new Image()
         img.src = "./assets/Monkey.png"
-        img.onload = function () {
+        this.context.imageSmoothingEnabled = false
+        this.context.drawImage(img, this.x, this.y, 64, 64)
+    }
 
-            self.context.imageSmoothingEnabled = false
-            self.context.drawImage(img, self.x, self.y, 64, 64)
-
-        }
+    move(xDiff, yDiff) {
+        this.x += xDiff
+        this.y += yDiff
     }
 }
