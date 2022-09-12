@@ -1,17 +1,18 @@
+import {TILE_SIZE} from "./constants.js"
+
 export class Monkey {
-    constructor(context, x, y) {
-        this.context = context
+    constructor(x, y) {
         this.x = x
         this.y = y
         this.img = new Image()
-        this.img.src = "./assets/Monkey.png"
+        this.img.src = "./assets/monkey.png"
     }
 
-    draw = () => {
+    render(context) {
         let img = new Image()
-        img.src = "./assets/Monkey.png"
-        this.context.imageSmoothingEnabled = false
-        this.context.drawImage(img, this.x, this.y, 64, 64)
+        img.src = "./assets/monkey.png"
+        context.imageSmoothingEnabled = false
+        context.drawImage(img, this.x * TILE_SIZE, this.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
     }
 
     move(xDiff, yDiff) {
