@@ -1,18 +1,15 @@
 import {TILE_SIZE} from "./constants.js"
+import {Texture} from "./texture.js";
 
 export class Monkey {
     constructor(x, y) {
         this.x = x
         this.y = y
-        this.img = new Image()
-        this.img.src = "./assets/monkey.png"
+        this.tex = new Texture("./assets/monkey.png")
     }
 
     render(context) {
-        let img = new Image()
-        img.src = "./assets/monkey.png"
-        context.imageSmoothingEnabled = false
-        context.drawImage(img, this.x * TILE_SIZE, this.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+        this.tex.render(context, this.x * TILE_SIZE, this.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
     }
 
     move(xDiff, yDiff) {
