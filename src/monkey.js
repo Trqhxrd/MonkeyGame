@@ -5,7 +5,7 @@ export class Monkey {
     constructor(x, y) {
         this.x = x
         this.y = y
-        this.tex = new Texture("./assets/monkey.png")
+        this.tex = new Texture("./assets/monkey_front.png")
     }
 
     render(context) {
