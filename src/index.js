@@ -1,11 +1,12 @@
-import {Grid} from "./grid.js";
-import {Monkey} from "./monkey.js";
+import {Grid} from "./grid";
+import {Monkey} from "./monkey";
+import {KeyHandler} from "./keyhandler";
 
 let canvas
 let context
 let grid
 let monkey
-let handler
+let handler = new KeyHandler()
 
 window.onload = function () {
     canvas = document.getElementById("canvas")
@@ -16,6 +17,9 @@ window.onload = function () {
 
     monkey = new Monkey(0,0)
     grid = new Grid(10, 10)
+
+    handler.handlers.push(monkey.handleKey)
+
     setInterval(loop, 50)
 }
 

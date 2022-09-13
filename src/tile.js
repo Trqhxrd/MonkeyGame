@@ -6,9 +6,8 @@ export class Tile {
         this.x = x
         this.y = y
         this.height = height
-        // if ((this.x + this.y) % 2 === 0) this.color = "#007700"
-        // else this.color = "#009900"
-        this.tex = new Texture("./assets/grass.png")
+        if ((this.x + this.y) % 2 === 0) this.tex = new Texture("./assets/grass.png")
+        else this.tex = new Texture("./assets/grass2.png")
     }
 
     render(context) {

@@ -16,4 +16,12 @@ export class Monkey {
         this.x += xDiff
         this.y += yDiff
     }
+
+    handleKey(e) {
+        switch (e.key){
+            case "s":
+                this.move(0,1)
+                break
+        }
+    }
 }
