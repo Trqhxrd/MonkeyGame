@@ -105,3 +105,6 @@ dist
 
 # IntelliJ Configs
 .idea
+
+# Webpack file
+./tmp
