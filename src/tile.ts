@@ -1,4 +1,4 @@
-import {getTexture, Texture} from "./texture";
+import {texture, Texture} from "./texture";
 
 export const TILE_SIZE = 30
 
@@ -12,7 +12,7 @@ export class Tile {
         this.x = x
         this.y = y
         this.height = height
-        this.texture = getTexture(textureSrc)
+        this.texture = texture(textureSrc)
     }
 
     render(context: CanvasRenderingContext2D) {
