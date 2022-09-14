@@ -1,6 +1,7 @@
 import {texture, Texture} from "../utils/texture";
 import {Direction} from "../utils/direction";
 import {TILE_SIZE} from "./tile";
+import {addKeyHandler, KeyHandler} from "../utils/keyhandler";
 
 export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Texture>([
     [Direction.UP, texture("./assets/monkey_back.png")],
@@ -9,7 +10,7 @@ export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Textu
     [Direction.RIGHT, texture("./assets/monkey_right.png")]
 ])
 
-export class Monkey {
+export class Monkey implements KeyHandler {
     x: number
     y: number
     direction: Direction
@@ -18,6 +19,7 @@ export class Monkey {
         this.x = x
         this.y = y
         this.direction = direction
+        addKeyHandler(this)
     }
 
     render(context: CanvasRenderingContext2D) {
@@ -28,5 +30,43 @@ export class Monkey {
             TILE_SIZE,
             TILE_SIZE
         )
+    }
+
+    move(x: number, y: number) {
+        this.x += x
+        this.y += y
+    }
+
+    set(x: number, y: number) {
+        this.x = x
+        this.y = y
+    }
+
+    handleKey(e: KeyboardEvent): void {
+        switch (e.key) {
+            case "w":
+            case "ArrowUp":
+                this.direction = Direction.UP
+                this.move(0, -1)
+                break
+            case "s":
+            case "ArrowDown":
+                this.direction = Direction.DOWN
+                this.move(0, 1)
+                break
+            case "a":
+            case "ArrowLeft":
+                this.direction = Direction.LEFT
+                this.move(-1, 0)
+                break
+            case "d":
+            case "ArrowRight":
+                this.direction = Direction.RIGHT
+                this.move(1, 0)
+                break
+            default:
+                console.log(e)
+                break
+        }
     }
 }
