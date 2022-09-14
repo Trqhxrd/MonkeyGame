@@ -1,6 +1,6 @@
-import {texture, Texture} from "./texture";
+import {texture, Texture} from "../utils/texture";
 
-export const TILE_SIZE = 30
+export const TILE_SIZE = 48
 
 export class Tile {
     x: number;

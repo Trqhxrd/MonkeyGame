@@ -1,9 +1,13 @@
 import {Tile} from "./tile";
 
 export class Grid {
-    tiles: Tile[][] = []
+    readonly width: number
+    readonly height: number
+    readonly tiles: Tile[][] = []
 
     constructor(width: number, height: number) {
+        this.width = width
+        this.height = height
         for (let x = 0; x < width; x++) {
             this.tiles.push([])
             for (let y = 0; y < height; y++) {

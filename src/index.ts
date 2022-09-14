@@ -1,16 +1,16 @@
-import {Texture} from "./texture";
-import {Grid} from "./grid";
-import {Monkey} from "./monkey";
+import {Grid} from "./game/grid";
+import {Monkey} from "./game/monkey";
+import {TILE_SIZE} from "./game/tile";
 
 window.onload = () => {
-    let texture = new Texture("./assets/monkey_front.png")
-    let canvas = document.getElementById("canvas") as HTMLCanvasElement
-    let context = canvas.getContext("2d") as CanvasRenderingContext2D
-
-    context.imageSmoothingEnabled = false
-
-    let grid = new Grid(16, 16)
+    let grid = new Grid(20, 16)
     let monkey = new Monkey(7, 7)
+
+    let canvas = document.getElementById("canvas") as HTMLCanvasElement
+    canvas.width = grid.width * TILE_SIZE
+    canvas.height = grid.height * TILE_SIZE
+    let context = canvas.getContext("2d") as CanvasRenderingContext2D
+    context.imageSmoothingEnabled = false
 
     setInterval(() => {
         grid.render(context)

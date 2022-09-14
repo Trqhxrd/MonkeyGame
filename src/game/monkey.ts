@@ -1,5 +1,5 @@
-import {texture, Texture} from "./texture";
-import {Direction} from "./direction";
+import {texture, Texture} from "../utils/texture";
+import {Direction} from "../utils/direction";
 import {TILE_SIZE} from "./tile";
 
 export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Texture>([
