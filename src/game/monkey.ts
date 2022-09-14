@@ -1,7 +1,8 @@
 import {texture, Texture} from "../utils/texture";
 import {Direction} from "../utils/direction";
-import {TILE_SIZE} from "./tile";
 import {addKeyHandler, KeyHandler} from "../utils/keyhandler";
+import {TILE_SIZE} from "./grid";
+import {GameObject, getGameObjects, Movable} from "../utils/gameobject";
 
 export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Texture>([
     [Direction.UP, texture("./assets/monkey_back.png")],
@@ -10,7 +11,7 @@ export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Textu
     [Direction.RIGHT, texture("./assets/monkey_right.png")]
 ])
 
-export class Monkey implements KeyHandler {
+export class Monkey implements KeyHandler, Movable {
     x: number
     y: number
     direction: Direction
@@ -32,9 +33,16 @@ export class Monkey implements KeyHandler {
         )
     }
 
-    move(x: number, y: number) {
-        this.x += x
-        this.y += y
+    move(x: number, y: number): boolean {
+        let newX = this.x + x
+        let newY = this.y + y
+        let objs = getGameObjects(newX, newY)
+        // Check if none of the objects collide.
+        if (objs.map(obj => this.collide(obj)).filter(b => false).length == 0) {
+            this.x = newX
+            this.y = newY
+            return true
+        } else return false
     }
 
     set(x: number, y: number) {
@@ -68,5 +76,9 @@ export class Monkey implements KeyHandler {
                 console.log(e)
                 break
         }
+    }
+
+    collide(other: GameObject): boolean {
+        return false
     }
 }

@@ -1,6 +1,5 @@
-import {Grid} from "./game/grid";
+import {Grid, TILE_SIZE} from "./game/grid";
 import {Monkey} from "./game/monkey";
-import {TILE_SIZE} from "./game/tile";
 import {handleKeyDown} from "./utils/keyhandler";
 
 window.onload = () => {

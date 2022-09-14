@@ -2,17 +2,16 @@
   "name": "monkeygame",
   "version": "1.0.0",
   "description": "monkey.",
-  "main": "index.js",
   "scripts": {
-    "dev": "tsc-watch --project . --onSuccess \"webpack --mode development\"",
-    "prod": "webpack --mode production"
+    "dev": "tsc-watch --onSuccess \"webpack --mode development\"",
+    "build": "rm -r ./dist ./tmp && tsc && webpack --mode production"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Trqhxrd/MonkeyGame.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Trqhxrd",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Trqhxrd/MonkeyGame/issues"
