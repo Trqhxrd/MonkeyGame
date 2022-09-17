@@ -1,8 +1,8 @@
-import {texture, Texture} from "../utils/texture";
-import {Direction} from "../utils/direction";
-import {addKeyHandler, KeyHandler} from "../utils/keyhandler";
+import {texture, Texture} from "./texture";
+import {Direction} from "./direction";
+import {addKeyHandler, KeyHandler} from "./keyhandler";
 import {Grid, TILE_SIZE} from "./grid";
-import {Movable} from "../utils/gameobject";
+import {Movable} from "./gameobject";
 
 export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Texture>([
     [Direction.UP, texture("./assets/monkey_back.png")],

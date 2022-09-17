@@ -1,6 +1,6 @@
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
-    entry: './tmp',
+    entry: './tmp/index.js',
     output: {
         path: __dirname + "/dist",
         filename: "bundle.js"

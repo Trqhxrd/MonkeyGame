@@ -1,6 +1,6 @@
 import {GameObject} from "./gameobject";
-import {Monkey} from "../game/monkey";
-import {Tile} from "../game/grid";
+import {Monkey} from "./monkey";
+import {Tile} from "./grid";
 
 export interface CollisionHandler<T1 extends GameObject, T2 extends GameObject> {
 

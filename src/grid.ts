@@ -1,6 +1,6 @@
-import {texture, Texture} from "../utils/texture";
-import {GameObject} from "../utils/gameobject";
-import {Direction, directionOffset} from "../utils/direction";
+import {texture, Texture} from "./texture";
+import {GameObject} from "./gameobject";
+import {Direction, directionOffset} from "./direction";
 
 export class Grid {
     readonly width: number

@@ -1,6 +1,6 @@
-import {Grid, TILE_SIZE} from "./game/grid";
-import {Monkey} from "./game/monkey";
-import {handleKeyDown} from "./utils/keyhandler";
+import {Grid, TILE_SIZE} from "./grid";
+import {Monkey} from "./monkey";
+import {handleKeyDown} from "./keyhandler";
 
 window.onload = () => {
     let grid = new Grid(20, 16)

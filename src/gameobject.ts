@@ -1,4 +1,4 @@
-import {Grid, Tile} from "../game/grid";
+import {Grid, Tile} from "./grid";
 import {handleCollision} from "./collision";
 
 export abstract class GameObject {
