@@ -4,7 +4,9 @@ import {handleKeyDown} from "./utils/keyhandler";
 
 window.onload = () => {
     let grid = new Grid(20, 16)
-    let monkey = new Monkey(7, 7)
+    let monkey = new Monkey(grid, 7, 7)
+
+    grid.tile(7, 8).height = 1
 
     let canvas = document.getElementById("canvas") as HTMLCanvasElement
     canvas.width = grid.width * TILE_SIZE

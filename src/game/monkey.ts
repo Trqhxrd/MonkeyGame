@@ -1,8 +1,8 @@
 import {texture, Texture} from "../utils/texture";
 import {Direction} from "../utils/direction";
 import {addKeyHandler, KeyHandler} from "../utils/keyhandler";
-import {TILE_SIZE} from "./grid";
-import {GameObject, getGameObjects, Movable} from "../utils/gameobject";
+import {Grid, TILE_SIZE} from "./grid";
+import {Movable} from "../utils/gameobject";
 
 export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Texture>([
     [Direction.UP, texture("./assets/monkey_back.png")],
@@ -11,14 +11,11 @@ export const MONKEY_TEXTURES: Map<Direction, Texture> = new Map<Direction, Textu
     [Direction.RIGHT, texture("./assets/monkey_right.png")]
 ])
 
-export class Monkey implements KeyHandler, Movable {
-    x: number
-    y: number
+export class Monkey extends Movable implements KeyHandler {
     direction: Direction
 
-    constructor(x: number, y: number, direction: Direction = Direction.DOWN) {
-        this.x = x
-        this.y = y
+    constructor(grid: Grid, x: number, y: number, direction: Direction = Direction.DOWN) {
+        super(grid, x, y)
         this.direction = direction
         addKeyHandler(this)
     }
@@ -31,23 +28,6 @@ export class Monkey implements KeyHandler, Movable {
             TILE_SIZE,
             TILE_SIZE
         )
-    }
-
-    move(x: number, y: number): boolean {
-        let newX = this.x + x
-        let newY = this.y + y
-        let objs = getGameObjects(newX, newY)
-        // Check if none of the objects collide.
-        if (objs.map(obj => this.collide(obj)).filter(b => false).length == 0) {
-            this.x = newX
-            this.y = newY
-            return true
-        } else return false
-    }
-
-    set(x: number, y: number) {
-        this.x = x
-        this.y = y
     }
 
     handleKey(e: KeyboardEvent): void {
@@ -76,9 +56,5 @@ export class Monkey implements KeyHandler, Movable {
                 console.log(e)
                 break
         }
-    }
-
-    collide(other: GameObject): boolean {
-        return false
     }
 }

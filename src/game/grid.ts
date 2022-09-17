@@ -1,9 +1,12 @@
 import {texture, Texture} from "../utils/texture";
+import {GameObject} from "../utils/gameobject";
+import {Direction, directionOffset} from "../utils/direction";
 
 export class Grid {
     readonly width: number
     readonly height: number
     readonly tiles: Tile[][] = []
+    readonly objects: GameObject[] = [];
 
     constructor(width: number, height: number) {
         this.width = width
@@ -19,23 +22,31 @@ export class Grid {
     render(context: CanvasRenderingContext2D) {
         this.tiles.flatMap(t => t).forEach(t => t.render(context))
     }
+
+    tile(x: number, y: number): Tile {
+        return this.tiles[x][y]
+    }
 }
 
 export const TILE_SIZE = 48
 
-export class Tile {
-    readonly grid
-    x: number;
-    y: number;
+export class Tile extends GameObject {
     height: number;
     texture: Texture
 
     constructor(grid: Grid, x: number, y: number, height: number, textureSrc: string) {
-        this.grid = grid
-        this.x = x
-        this.y = y
+        super(grid,x,y)
         this.height = height
         this.texture = texture(textureSrc)
+    }
+
+    getRelative(dir: Direction): Tile {
+        let offset = directionOffset(dir)
+        return this.grid.tile(this.x + offset.x, this.y + offset.y)
+    }
+
+    tile(): Tile {
+        return this;
     }
 
     render(context: CanvasRenderingContext2D) {
